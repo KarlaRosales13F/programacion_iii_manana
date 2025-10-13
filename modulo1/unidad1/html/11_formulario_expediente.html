@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <form action="procesar.php" method="post">
+
+    <table border="0">
+        <tr>
+            <th>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+            </th>
+            <th>
+                <label for="correo">Correo Electronico</label>
+                <input type="email" id="correo" name="correo">
+            </th>
+        </tr>
+    </table>
+   
+        <tr>
+            <th>
+                <label for="fecha">Fecha de nacimiento:</label>
+                <input type="date" id="fecha" name="fecha">
+            </th>
+            <th>
+                <label for="color">Color Favorito:</label>
+                <input type="color" id="color" name="color">
+            </th>
+        </tr>
+    </table>
+    <br> </br>
+    <tr>
+        <td>
+            <label for="color">Genero</label>
+            <input type="radio" id="m" name="genero" value="M"><label for="m">Masculino</label>
+            <input type="radio" id="m" name="genero" value="F"><label for="f">Femenino</label>
+        </td>
+        <br> </br>
+        <td>
+            <label for="color">Pais</label>
+            <select id="pais" name="pais">
+                <option value="ec">Seleccione ...</option>
+                <option value="ec">Ecuador</option>
+                <option value="mx">Mexico</option>
+                <option value="ve">Venezuela</option>
+            </select>
+        </td>
+    </tr>
+    <br> </br>
+    <tr> 
+        <td>
+            <label for="comentarios">Comentarios:</label>
+            <textarea id="comentarios" name="comentarios" rows="5"></textarea>
+        </td>
+        <br> </br>
+            <td>
+            <input type="checkbox" id="acepto" name="acepto" required>
+            <label for="paisacepto">Acepto los terminos y condiciones</label>
+            </td>
+        </tr>
+        <br> </br>
+    </table>
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Limpiar">
+    
+
+</form>
+
+</body>
+</html>
