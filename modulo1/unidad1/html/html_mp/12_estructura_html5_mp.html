@@ -3,106 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo de Layout y Grid — HTML5</title>
+  <title>Hotel Casa Blanca — Reservas y Estructura HTML5</title>
 </head>
+
 <body>
   <header>
-    <h1>Ejemplo de Layout y Grid en HTML5</h1>
-    <p>Diseño estructural adaptable — sin CSS (solo HTML)</p>
+    <h1>Hotel Casa Blanca — Reservas en Quito</h1>
+    <p>Ejemplo de estructura y distribución de contenido en HTML5</p>
   </header>
+
   <nav>
     <ul>
       <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#flex">Sección Flexbox</a></li>
-      <li><a href="#grid">Sección Grid</a></li>
+      <li><a href="#habitaciones">Habitaciones</a></li>
+      <li><a href="#reservas">Reservas</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
-
   <main id="inicio">
-    <section id="flex">
-      <h2>Diseño tipo Flexbox</h2>
+    <section id="habitaciones">
+      <h2>Nuestras Habitaciones</h2>
       <p>
-        Este bloque representa un layout que luego puede adaptarse con Flexbox.
-        Su estructura contiene una zona principal de contenido y un <em>aside</em> lateral.
+        En el <strong>Hotel Casa Blanca</strong> contamos con habitaciones cómodas y elegantes
+        para que disfrutes de una estancia inolvidable en el corazón de Quito.
       </p>
 
-
       <article>
-        <h3>Contenido principal</h3>
+        <h3>Habitación Doble</h3>
         <p>
-          Aquí iría el contenido principal, que con CSS Flexbox podrá ocupar más espacio horizontal,
-          mientras el <code>&lt;aside&gt;</code> se alineará al lado derecho.
+          Perfecta para parejas o amigos, equipada con baño privado, televisión y desayuno incluido.
+          Ideal para descansar luego de recorrer la ciudad.
         </p>
       </article>
 
-
       <aside>
-        <h3>Aside o barra lateral</h3>
+        <h3>Promociones Especiales</h3>
         <p>
-          Contenido adicional, enlaces o anuncios. En pantallas pequeñas se ubicará debajo del artículo.
+           Reserva 3 noches o más y obtén un 10% de descuento.  
+           Incluye parqueadero gratuito y wifi de alta velocidad.
         </p>
       </aside>
-      <p><a href="#grid">Ir a la sección Grid ↓</a></p>
-    </section>
 
+      <p><a href="#reservas">Ir a la sección de Reservas ↓</a></p>
+    </section>
 
     <hr>
 
-
-    <section id="grid">
-      <h2>Diseño tipo Grid</h2>
+    <section id="reservas">
+      <h2>Reservas — Ejemplo de Estructura tipo Grid</h2>
       <p>
-        Este ejemplo muestra cómo estructurar un contenedor que más adelante se dividirá en áreas de cuadrícula.
+        A continuación se muestra una estructura básica de cómo podría organizarse
+        la sección de reservas del Hotel Casa Blanca.
       </p>
-
 
       <div class="grid-container">
         <header>
-          <h3>Encabezado del Grid</h3>
+          <h3>Encabezado de la Sección Grid</h3>
+          <p>Reservas en línea — Hotel Casa Blanca Quito</p>
         </header>
-
 
         <nav>
           <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#flex">Flexbox</a></li>
+            <li><a href="#habitaciones">Habitaciones</a></li>
+            <li><a href="#reservas">Reservar</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
 
-
         <main>
-          <h3>Contenido Principal</h3>
+          <h3>Formulario de Reserva</h3>
           <p>
-            Esta área sería la sección central de la cuadrícula.
-            Con CSS Grid, podría ocupar varias columnas.
+            Aquí podrías incluir el formulario para ingresar datos de la reserva:
+            nombre del huésped, fechas de llegada y salida, y tipo de habitación.
           </p>
         </main>
 
-
         <aside>
-          <h3>Aside del Grid</h3>
-          <p>Zona lateral o secundaria dentro del diseño Grid.</p>
+          <h3>Información Útil</h3>
+          <p>
+            🕒 Check-in: 14h00  
+            🕕 Check-out: 12h00  
+            📞 Cancelación gratuita hasta 24h antes de la llegada.
+          </p>
         </aside>
 
-
         <footer>
-          <p>Pie de página del Grid © 2025</p>
+          <p>© 2025 Hotel Casa Blanca — Todos los derechos reservados</p>
         </footer>
       </div>
-
 
       <p><a href="#inicio">↑ Volver al inicio</a></p>
     </section>
   </main>
 
-
   <footer id="contacto">
-    <p>Contacto: <a href="mailto:info@ejemplo.com">info@ejemplo.com</a></p>
+    <p>Contacto: <a href="mailto:reservas@hotelcasablanca.com">reservas@hotelcasablanca.com</a></p>
+    <p>Dirección:Av. Francisco de Orellana 1172 Y, Quito 170150 — Tel: +593 2 611 1234</p>
   </footer>
-
-
 </body>
 </html>
