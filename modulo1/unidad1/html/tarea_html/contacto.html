@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto - Hotel Casa Blanca</title>
+</head>
+<body>
+  <header>
+    <h1>Contactanos</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="acerca.html">Acerca</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="tabla.html">Habitaciones</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Formulario de Reserva</h2>
+      <form action="procesar.php" method="post">
+        <fieldset>
+          <legend>Datos del huésped</legend>
+
+          <label for="nombre">Nombre completo:</label>
+          <input type="text" id="nombre" name="nombre" required><br><br>
+
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" name="correo" required><br><br>
+
+          <label for="fecha">Fecha de llegada:</label>
+          <input type="date" id="fecha" name="fecha"><br><br>
+
+          <label for="noches">Número de noches:</label>
+          <input type="number" id="noches" name="noches" min="1" max="30"><br><br>
+
+          <label for="habitacion">Tipo de habitación:</label>
+          <select id="habitacion" name="habitacion">
+            <option value="individual">Individual</option>
+            <option value="doble">Doble</option>
+            <option value="suite">Suite</option>
+          </select><br><br>
+
+          <label>Servicios adicionales:</label><br>
+          <input type="checkbox" id="spa" name="servicios" value="spa">
+          <label for="spa">Acceso al spa</label><br>
+          <input type="checkbox" id="transporte" name="servicios" value="transporte">
+          <label for="transporte">Transporte al aeropuerto</label><br><br>
+
+          <label>Género:</label><br>
+          <input type="radio" id="m" name="genero" value="M"><label for="m">Masculino</label>
+          <input type="radio" id="f" name="genero" value="F"><label for="f">Femenino</label><br><br>
+
+          <label for="comentarios">Comentarios:</label><br>
+          <textarea id="comentarios" name="comentarios" rows="4" cols="40"></textarea><br><br>
+
+          <input type="checkbox" id="acepto" name="acepto" required>
+          <label for="acepto">Acepto los términos y condiciones</label><br><br>
+
+          <button type="submit">Enviar</button>
+          <button type="reset">Limpiar</button>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <hr>
+    <p>&copy; 2025 Hotel Casa Blanca</p>
+  </footer>
+</body>
+</html>

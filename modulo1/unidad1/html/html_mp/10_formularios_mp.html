@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Reserva</title>
+</head>
+<body>
+    <h2>Formulario de Reserva</h2>
+    <form action="procesar_reserva.php" method="post">
+        <label for="nombre">Nombre del huésped:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="correo">Correo electrónico:</label><br>
+        <input type="email" id="correo" name="correo" required><br><br>
+
+        <label for="fecha">Fecha de llegada:</label><br>
+        <input type="date" id="fecha" name="fecha" required><br><br>
+
+        <input type="submit" value="Reservar">
+    </form>
+</body>
+</html>
