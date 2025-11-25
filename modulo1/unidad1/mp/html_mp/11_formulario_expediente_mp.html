@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Reserva Completa</title>
+</head>
+<body>
+    <h2>Registro de Reserva - Hotel "Casa Blanca"</h2>
+
+    <form action="procesar_reserva.php" method="post">
+        <table border="0">
+            <tr>
+                <th>
+                    <label for="nombre">Nombre del huésped:</label><br>
+                    <input type="text" id="nombre" name="nombre" required>
+                </th>
+                <th>
+                    <label for="correo">Correo electrónico:</label><br>
+                    <input type="email" id="correo" name="correo" required>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for="fecha_llegada">Fecha de llegada:</label><br>
+                    <input type="date" id="fecha_llegada" name="fecha_llegada" required>
+                </th>
+                <th>
+                    <label for="fecha_salida">Fecha de salida:</label><br>
+                    <input type="date" id="fecha_salida" name="fecha_salida" required>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label>Tipo de habitación:</label><br>
+                    <select id="habitacion" name="habitacion">
+                        <option value="">Seleccione...</option>
+                        <option value="simple">Simple</option>
+                        <option value="doble">Doble</option>
+                        <option value="suite">Suite</option>
+                    </select>
+                </th>
+                <th>
+                    <label>Número de huéspedes:</label><br>
+                    <input type="number" id="huespedes" name="huespedes" min="1" max="10">
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="comentarios">Comentarios o solicitudes especiales:</label><br>
+                    <textarea id="comentarios" name="comentarios" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" id="acepto" name="acepto" required>
+                    <label for="acepto">Acepto los términos y condiciones del Hotel "Casa Blanca".</label>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Confirmar reserva">
+        <input type="reset" value="Limpiar formulario">
+    </form>
+</body>
+</html>
