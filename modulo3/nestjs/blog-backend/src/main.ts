@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { GlobalHttpExceptionFilter } from './common/filters/http-exception.filter';
+import { GlobalHttpExceptionFilter } from './common/dto/filters/http-exception.filter';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 

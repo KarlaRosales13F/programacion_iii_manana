@@ -3,6 +3,7 @@ import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { Pagination } from 'nestjs-typeorm-paginate';
+import { Category } from './category.entity';
 
 @Controller('categories')
 export class CategoriesController {
@@ -29,10 +30,6 @@ export class CategoriesController {
     return this.categoriesService.findAll({
       page,
       limit,
-      search,
-      searchField,
-      sortBy,
-      sortOrder,
     });
   }
 
