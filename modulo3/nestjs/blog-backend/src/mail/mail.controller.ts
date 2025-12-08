@@ -7,9 +7,20 @@ import { SuccessResponseDto } from '../common/dto/response.dto';
 export class MailController {
   constructor(private readonly mailService: MailService) {}
 
+  @Get('public-api')
+  async getUsersFromPublicApi() {
+    const result = await this.mailService.fetchUserListFromPublicApi();
+    return new SuccessResponseDto('Usuarios obtenidos', result);
+  }
+
   @Post('gmail')
   async sendGmail(@Body() dto: SendMailDto) {
     const result = await this.mailService.sendMail(dto);
     return new SuccessResponseDto('Correo enviado con Gmail', result);
+  }
+  @Post('sendgrid')
+  async sendSendGrid(@Body() dto: SendMailDto) {
+    const result = await this.mailService.sendWithSendGrid(dto);
+    return new SuccessResponseDto('Correo enviado con SendGrid', result);
   }
 }

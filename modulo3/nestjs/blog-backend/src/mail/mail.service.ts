@@ -4,6 +4,12 @@ import { SendMailDto } from './dto/send-mail.dto';
 
 @Injectable()
 export class MailService {
+  sendWithSendGrid(dto: SendMailDto) {
+      throw new Error('Method not implemented.');
+  }
+  fetchUserListFromPublicApi() {
+      throw new Error('Method not implemented.');
+  }
   async sendMail(dto: SendMailDto) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
