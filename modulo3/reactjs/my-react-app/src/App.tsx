@@ -25,6 +25,16 @@ import LanguageSwitcher from './useState/LanguageSwitcher';
 import LoginWithLimit from './useState/LoginWithLimit';
 import MultiSwitch from './useState/MultiSwitch';
 import PostLikes from './useState/PostLikes';
+import ExpensiveCalc from './useMemo/ExpensiveCalc';
+import FiltroLista from './useMemo/FiltroLista';
+import TablaOrdenada from './useMemo/TablaOrdenada';
+import PrimosMemo from './useMemo/PrimosMemo';
+import ContadorLetras from './useMemo/ContadorLetras';  
+import Contador from './useCallback/Contador';
+import ReRender from './useCallback/ReRender';
+import Saludo from './useCallback/Saludo';
+import ContadorReducer from './useReducer/ContadorReducer';
+
 
 function App() {
   const userData = { name: "Carlos", age: 30,
@@ -48,7 +58,6 @@ function App() {
       <Greeting name="Francisco" />
       <Greeting name="Ana" />
       <PromedioTresNotasForm />
-      
       <UserCard user={userData} />
       <ParentButtonOne />
       <ParentIncrementButton />
@@ -63,6 +72,16 @@ function App() {
       <CheckboxSummary />
       <LanguageSwitcher />
       <MultiSwitch />
+      <ExpensiveCalc />
+      <FiltroLista />
+      <TablaOrdenada />
+      <PrimosMemo />
+      <ContadorLetras/>
+      <Contador />
+      <ReRender />
+      <Saludo />
+      <ContadorReducer />
+      <ListaReducer />
     </>
   );
 }
