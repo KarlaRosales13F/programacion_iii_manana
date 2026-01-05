@@ -1,20 +1,18 @@
+import { useReducer, type ChangeEvent } from "react";
 
-import { useReducer } from 'react';
-import type { ChangeEvent } from 'react';
-
-interface State {
+interface FormState {
   nombre: string;
   email: string;
 }
 
-interface Action {
-  name: string;
+type FormAction = {
+  name: keyof FormState; 
   value: string;
-}
+};
 
-const initialState: State = { nombre: '', email: '' };
+const initialState: FormState = { nombre: "", email: "" };
 
-function reducer(state: State, action: Action): State {
+function reducer(state: FormState, action: FormAction): FormState {
   return { ...state, [action.name]: action.value };
 }
 
@@ -22,7 +20,7 @@ export default function FormularioReducer() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    dispatch({ name: e.target.name, value: e.target.value });
+    dispatch({ name: e.target.name as keyof FormState, value: e.target.value });
   }
 
   return (

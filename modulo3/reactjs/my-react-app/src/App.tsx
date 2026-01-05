@@ -34,7 +34,12 @@ import Contador from './useCallback/Contador';
 import ReRender from './useCallback/ReRender';
 import Saludo from './useCallback/Saludo';
 import ContadorReducer from './useReducer/ContadorReducer';
-
+import AreaTriangulo from './useState/AreaTriangulo';
+import UseIdHook from './useId/useIdHook';
+import LoginCampos from './useId/loginCampos';
+import { BuscadorUseTransition } from './useTransition/buscadorUseTransition';
+import { TabsUseTransition } from './useTransition/tabsUseTransition';
+import { GaleriaDiferida } from './useTransition/galeriaDiferida';
 
 function App() {
   const userData = { name: "Carlos", age: 30,
@@ -81,7 +86,12 @@ function App() {
       <ReRender />
       <Saludo />
       <ContadorReducer />
-      <ListaReducer />
+      <AreaTriangulo />
+      <UseIdHook />
+      <LoginCampos />
+      <BuscadorUseTransition/>
+      <TabsUseTransition/>
+      <GaleriaDiferida/>
     </>
   );
 }
