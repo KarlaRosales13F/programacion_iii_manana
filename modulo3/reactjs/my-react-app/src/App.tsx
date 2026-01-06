@@ -40,6 +40,19 @@ import LoginCampos from './useId/loginCampos';
 import { BuscadorUseTransition } from './useTransition/buscadorUseTransition';
 import { TabsUseTransition } from './useTransition/tabsUseTransition';
 import { GaleriaDiferida } from './useTransition/galeriaDiferida';
+import BusquedaDiferida from './useDeferredValue/BusquedaDiferidaDeferred';
+import GraficoDiferido from './useDeferredValue/GraficoDiferido';
+import ValidacionEmail from './useDeferredValue/ValidacionEmail';
+import ValidarEmail from './useDeferredValue/ValidarEmail';
+import { ControladorPanel } from './useImperativeHandle/ControladorPanel';
+import { PadreConInput } from './useImperativeHandle/PadreConInput';
+import { FormularioConRef } from './useImperativeHandle/FormularioconRef';
+import { PanelContadorConRef } from './useImperativeHandle/PanelContadorConRef';
+import { PaginaScroll } from './useImperativeHandle/PaginaScroll';
+import { ScrollAutoTS } from './useLayoutEffect/ScrollAutoTS';
+import MedicionCaja from './useLayoutEffect/MedicionCaja';
+import MostrarSinParpadeoTS from './useLayoutEffect/MostratSinParpadeoTS';
+import { CentradoVerticalTS } from './useLayoutEffect/CentradoVerticalTS';
 
 function App() {
   const userData = { name: "Carlos", age: 30,
@@ -92,6 +105,20 @@ function App() {
       <BuscadorUseTransition/>
       <TabsUseTransition/>
       <GaleriaDiferida/>
+      <BusquedaDiferida/>
+      <GraficoDiferido/>
+      <ValidacionEmail/>
+      <ValidarEmail/>
+      <ControladorPanel/>
+      <PadreConInput/>
+      <FormularioConRef/>
+      <PanelContadorConRef/>
+      <PaginaScroll/>
+      <ScrollAutoTS/>
+      <MedicionCaja/>
+      <MostrarSinParpadeoTS/>
+      <CentradoVerticalTS/>
+
     </>
   );
 }
