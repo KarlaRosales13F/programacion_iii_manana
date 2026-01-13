@@ -4,8 +4,15 @@ import LabTwAlert from "./lab/LabTwAlert";
 import LabTwCard from "./lab/LabTwCard";
 import LabTwForm from "./lab/LabTwForm";
 import LabTwTable from "./lab/LabTwTable";
+import LabTwAreaTriangulo from "./lab/LabTwAreaTriangulo";
 
-type LabKey = "buttons" | "alert" | "card" | "form" | "table";
+type LabKey =
+  | "buttons"
+  | "alert"
+  | "card"
+  | "form"
+  | "table"
+  | "area";
 
 export default function App() {
   const [lab, setLab] = useState<LabKey>("buttons");
@@ -13,13 +20,20 @@ export default function App() {
   return (
     <div>
       <div style={{ padding: 16 }}>
-        <label style={{ display: "block", marginBottom: 6 }}>Selecciona LAB</label>
-        <select value={lab} onChange={(e) => setLab(e.target.value as LabKey)}>
+        <label style={{ display: "block", marginBottom: 6 }}>
+          Selecciona LAB
+        </label>
+
+        <select
+          value={lab}
+          onChange={(e) => setLab(e.target.value as LabKey)}
+        >
           <option value="buttons">Buttons</option>
           <option value="alert">Alert</option>
           <option value="card">Card</option>
           <option value="form">Form</option>
           <option value="table">Table</option>
+          <option value="area">Área Triángulo</option>
         </select>
       </div>
 
@@ -28,6 +42,7 @@ export default function App() {
       {lab === "card" && <LabTwCard />}
       {lab === "form" && <LabTwForm />}
       {lab === "table" && <LabTwTable />}
+      {lab === "area" && <LabTwAreaTriangulo />}
     </div>
   );
 }
