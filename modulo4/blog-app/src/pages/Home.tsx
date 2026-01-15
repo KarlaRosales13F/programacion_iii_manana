@@ -1,4 +1,4 @@
-import { useEffect, useState, type JSX } from "react";
+import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -10,7 +10,7 @@ interface Post {
   content?: string;
 }
 
-export function Home(): JSX.Element {
+export function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const navigate = useNavigate();
 
