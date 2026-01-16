@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
+import type { JSX } from "react";
 
-export default function PublicFooter() {
+export default function PublicFooter(): JSX.Element {
   return (
     <Box
       component="footer"
@@ -29,3 +30,4 @@ export default function PublicFooter() {
     </Box>
   );
 }
+
