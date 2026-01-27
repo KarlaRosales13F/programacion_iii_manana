@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCategories, CategoryDto } from "../services/categories.service";
+import { getCategories, type CategoryDto } from "../services/categories.service";
 
 export function useCategoriesOptions() {
   const [options, setOptions] = useState<CategoryDto[]>([]);

@@ -2,13 +2,15 @@ import { createContext, useContext, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { loginApi, registerApi } from "../services/auth.service";
 
-type User = {
-  username: string;
+export type AuthUser = {
+  id?: string;
   email?: string;
+  username?: string;
+  role?: string;
 };
 
 type AuthContextType = {
-  user: User | null;
+  user: AuthUser | null;
   token: string | null;
   login: (payload: { username: string; password: string }) => Promise<void>;
   register: (payload: { username: string; email: string; password: string }) => Promise<void>;
@@ -17,43 +19,73 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(() => {
-    const raw = localStorage.getItem("auth_user");
-    return raw ? JSON.parse(raw) : null;
-  });
+function parseJwt(token: string): Record<string, any> | null {
+  try {
+    const base64 = token
+      .split(".")[1]
+      .replace(/-/g, "+")
+      .replace(/_/g, "/");
 
-  const [token, setToken] = useState<string | null>(() => {
-    return localStorage.getItem("auth_token");
-  });
+    const padded = base64 + "=".repeat((4 - (base64.length % 4)) % 4);
+    const json = window.atob(padded);
+
+    return JSON.parse(json);
+  } catch {
+    return null;
+  }
+}
+
+function userFromToken(token: string): AuthUser | null {
+  const payload = parseJwt(token);
+  if (!payload) return null;
+
+  return {
+    id: payload.id ?? payload.userId ?? payload.sub,
+    email: payload.email,
+    username: payload.username,
+    role: payload.role,
+  };
+}
+
+function loadInitialAuth(): { token: string | null; user: AuthUser | null } {
+  const token = localStorage.getItem("auth_token");
+  const rawUser = localStorage.getItem("auth_user");
+  const storedUser: AuthUser | null = rawUser ? JSON.parse(rawUser) : null;
+
+  if (token) {
+    const jwtUser = userFromToken(token);
+    const merged = { ...(storedUser || {}), ...(jwtUser || {}) };
+    return { token, user: merged };
+  }
+
+  return { token: null, user: storedUser };
+}
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const initial = loadInitialAuth();
+
+  const [token, setToken] = useState<string | null>(initial.token);
+  const [user, setUser] = useState<AuthUser | null>(initial.user);
+
+  const persistAuth = (token: string, fallback?: AuthUser) => {
+    const jwtUser = userFromToken(token);
+    const merged = { ...(fallback || {}), ...(jwtUser || {}) };
+
+    setToken(token);
+    setUser(merged);
+
+    localStorage.setItem("auth_token", token);
+    localStorage.setItem("auth_user", JSON.stringify(merged));
+  };
 
   const login = async (payload: { username: string; password: string }) => {
     const token = await loginApi(payload);
-
-    setToken(token);
-    setUser({ username: payload.username });
-
-    localStorage.setItem("auth_token", token);
-    localStorage.setItem(
-      "auth_user",
-      JSON.stringify({ username: payload.username })
-    );
+    persistAuth(token, { username: payload.username });
   };
 
   const register = async (payload: { username: string; email: string; password: string }) => {
     const token = await registerApi(payload);
-
-    setToken(token);
-    setUser({ username: payload.username, email: payload.email });
-
-    localStorage.setItem("auth_token", token);
-    localStorage.setItem(
-      "auth_user",
-      JSON.stringify({
-        username: payload.username,
-        email: payload.email,
-      })
-    );
+    persistAuth(token, { username: payload.username, email: payload.email });
   };
 
   const logout = () => {
@@ -64,21 +96,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const value = useMemo(
-    () => ({
-      user,
-      token,
-      login,
-      register,
-      logout,
-    }),
+    () => ({ user, token, login, register, logout }),
     [user, token]
   );
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth(): AuthContextType {
@@ -88,5 +110,3 @@ export function useAuth(): AuthContextType {
   }
   return context;
 }
-
-

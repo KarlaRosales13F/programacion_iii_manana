@@ -1,13 +1,10 @@
-import { Alert, Stack, Typography } from "@mui/material";
-import type { JSX } from "react";
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import DashboardHome from "./DashboardHome";
 
-export default function DashboardHome(): JSX.Element {
-  return (
-    <Stack spacing={2}>
-      <Typography variant="h4">Dashboard</Typography>
-      <Alert severity="info">
-        Este dashboard está vacío. En la siguiente página se agrega el menú lateral (Drawer).
-      </Alert>
-    </Stack>
-  );
-}
+describe("DashboardHome", () => {
+  test("renderiza el título principal", () => {
+    render(<DashboardHome />);
+    expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
+  });
+});

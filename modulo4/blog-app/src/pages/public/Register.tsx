@@ -1,60 +1,35 @@
-import { Alert, Button, Paper, Stack, TextField, Typography } from "@mui/material";
-import { useState, type JSX } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import React from "react";
+import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import Register from "./Register";
+import { renderWithRouter } from "../../test/testUtils";
 
-export default function Register(): JSX.Element {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
+const registerMock = jest.fn();
 
-  const { register } = useAuth();
-  const navigate = useNavigate();
+jest.mock("../../context/AuthContext", () => ({
+  useAuth: () => ({
+    register: registerMock
+  })
+}));
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      setError(null);
-      await register({ username, email, password });
-      navigate("/dashboard", { replace: true });
-    } catch {
-      setError("No se pudo registrar. Revisa los datos o intenta más tarde.");
-    }
-  };
+describe("Register", () => {
+  beforeEach(() => {
+    registerMock.mockReset();
+  });
 
-  return (
-    <Paper sx={{ p: 3, maxWidth: 520, mx: "auto" }}>
-      <Stack spacing={2} component="form" onSubmit={handleSubmit}>
-        <Typography variant="h5">Registro</Typography>
+  test("envía datos con useAuth().register", async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<Register />);
 
-        {error ? <Alert severity="error">{error}</Alert> : null}
+    await user.type(screen.getByLabelText(/username/i), "francisco");
+    await user.type(screen.getByLabelText(/email/i), "francisco@test.com");
+    await user.type(screen.getByLabelText(/password/i), "123456");
+    await user.click(screen.getByRole("button", { name: /crear cuenta/i }));
 
-        <TextField
-          label="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-
-        <TextField
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <TextField
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-
-        <Button type="submit" variant="contained">Registrar</Button>
-      </Stack>
-    </Paper>
-  );
-}
+    expect(registerMock).toHaveBeenCalledWith({
+      username: "francisco",
+      email: "francisco@test.com",
+      password: "123456"
+    });
+  });
+});
