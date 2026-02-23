@@ -1,0 +1,25 @@
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid #49ac72;
+    padding: 10px;
+    background-color: rgb(58, 58, 179);
+    justify-content: center;
+    align-items: center;
+}
+.item{
+    background-color: rgb(86, 30, 192);
+    padding: 20px;
+    border: 2px solid #1ca074;
+    flex: 1 1 100px;
+    text-align: center;
+}
+.item_especial{
+    align-self: flex-start;
+    background-color: rgb(197, 24, 125);
+    padding: 20px;
+    border: 2px solid #288b30;
+    flex: 1 1 150px;
+    text-align: center;
+}

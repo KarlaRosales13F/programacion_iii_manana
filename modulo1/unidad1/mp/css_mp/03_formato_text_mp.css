@@ -1,0 +1,27 @@
+.texto_ejemplo {
+    color: #333;
+    background-color: rgb(202, 172, 231);
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: blod;
+    line-height: 1.7;
+    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+    white-space: nowrap;
+}
+
+p {
+    color: #A15A4C;
+    background-color: rgb(231, 202, 202);
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1;
+    text-decoration: line-through;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    white-space: nowrap;
+}

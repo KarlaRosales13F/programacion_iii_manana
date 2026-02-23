@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Manipulación de Estilos — HOTEL CASA BLANCA</title>
+  <style>
+    #cuadro {
+      width: 100px;
+      height: 100px;
+      background-color: #58a6ff;
+      border-radius: 10px;
+      transition: all 0.5s ease;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-family: sans-serif; font-size: 12px;
+    }
+  </style>
+  <script src="09_estilos_mp.js" defer></script>
+</head>
+<body>
+  <h1>Tarjeta de Habitación (demo de estilos)</h1>
+
+  <div id="cuadro">Hab</div>
+
+  <div style="margin-top:20px;">
+    <button onclick="cambiarColor()">🎨 Cambiar Color</button>
+    <button onclick="aumentarTamano()">⬆️ Aumentar Tamaño</button>
+    <button onclick="reiniciar()">🔄 Reiniciar</button>
+  </div>
+</body>
+</html>
